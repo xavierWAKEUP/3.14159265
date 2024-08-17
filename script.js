@@ -1,13 +1,12 @@
 function generatePi() {
     const digits = parseInt(document.getElementById('digits').value);
     
-    if (digits <= 0) {
+    if (isNaN(digits) || digits <= 0) {
         alert("Please enter a positive number.");
         return;
     }
 
-    // Use a high precision library or approximation for pi
-    // Here is a simple implementation for demonstration
+    // Pi calculation
     const pi = calculatePi(digits);
     
     // Create a Blob with the pi digits
@@ -23,14 +22,12 @@ function generatePi() {
 }
 
 function calculatePi(digits) {
+    // Basic implementation, for educational purposes
     let pi = '3.';
     let k = 1;
-    let q = 1;
-    let m = 1;
-    let r = 1;
     
-    for (let i = 0; i < digits; i++) {
-        let num = 12 / (16 ** k) * (
+    while (pi.length < digits + 2) {
+        const num = 12 / (16 ** k) * (
             (4 / (8 * k + 1)) -
             (2 / (8 * k + 4)) -
             (1 / (8 * k + 5)) -
